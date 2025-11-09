@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Button } from "./ui/button";
 
-export const Counter: React.FC = () => {
+interface CounterProps extends React.ComponentProps<typeof Button> {}
+export const Counter: React.FC<CounterProps> = (props) => {
   const [count, setCount] = useState(0);
 
   return (
-    <button id="counter" type="button" onClick={() => setCount(count + 1)}>
+    <Button onClick={() => setCount(count + 1)} {...props}>
       {count}
-    </button>
+    </Button>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 
-interface HeaderProps {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title }) => {
+export const Header: React.FC<HeaderProps> = ({ title, ...props }) => {
   return (
-    <header id="header">
-      <h1>{title}</h1>
+    <header {...props}>
+      <h1 className="flex items-center justify-center">{title}</h1>
     </header>
   );
 };

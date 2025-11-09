@@ -5,21 +5,21 @@ import typescriptLogo from "/typescript.svg";
 import { Header, Counter } from "@repo/ui";
 
 const App = () => (
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" className="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img
-        src={typescriptLogo}
-        className="logo vanilla"
-        alt="TypeScript logo"
-      />
-    </a>
-    <Header title="Web" />
-    <div className="card rounded-md border p-4 bg-green-200">
-      <Counter />
+  <div className="flex flex-col items-center justify-center gap-12 pt-20">
+    <div className="flex gap-8">
+      <a href="https://vitejs.dev" target="_blank">
+        <img src="/vite.svg" className="size-20 rounded-lg" alt="Vite logo" />
+      </a>
+      <a href="https://www.typescriptlang.org/" target="_blank">
+        <img
+          src={typescriptLogo}
+          className="size-20 rounded-lg"
+          alt="TypeScript logo"
+        />
+      </a>
     </div>
+    <Header title="Web" className="text-2xl font-bold" />
+    <Counter variant="outline" size="lg" />
   </div>
 );
 
