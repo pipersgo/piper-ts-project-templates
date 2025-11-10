@@ -6,7 +6,6 @@ This file lists third party components included in this project, their original 
 
 awesome-copilot
 
-Path: ai/with-awesome-copilot
 Source: https://github.com/github/awesome-copilot/tree/main
 License: MIT
 Copyright GitHub, Inc.
