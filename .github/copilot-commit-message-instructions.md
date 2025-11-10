@@ -1,9 +1,8 @@
 <!--
-This work is inspired by and derived from the "conventionalcommits.org" project (MIT License).
-The following file was used from that project:
- content/v1.0.0/index.md
+This work is inspired by and derived from "conventionalcommits.org" Copyright (c) 2018 Conventional Changelog.
+Modified by pipersgo, 2025.
 
-Copyright (c) 2018 Conventional Changelog
+Licensed under the MIT License.
 See ThirdPartyNotices.txt for license details.
 -->
 
