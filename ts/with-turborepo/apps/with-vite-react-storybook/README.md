@@ -110,10 +110,15 @@ Extends the shared Vite TypeScript preset:
 Uses base config plus Storybook plugin:
 
 ```js
-import baseConfig from "@repo/eslint-config/base";
-import storybook from "eslint-plugin-storybook";
+import { defineConfig, globalIgnores } from "eslint/config";
+import config from "@repo/eslint-config/react-internal";
+import pluginStorybook from "eslint-plugin-storybook";
 
-export default [...baseConfig, ...storybook.configs["flat/recommended"]];
+export default defineConfig([
+  globalIgnores([".storybook", "storybook-static", "vite.config.ts"]),
+  ...config,
+  pluginStorybook.configs["flat/recommended"],
+]);
 ```
 
 ## Deployment
