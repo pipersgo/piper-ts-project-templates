@@ -1,122 +1,97 @@
 ---
 mode: "agent"
-description: "Update Existing GitHub Issue to Match Template"
+description: "Update Existing GitHub Issue to Match Feature Request Template"
 tools:
   - search
   - github/github-mcp-server/search_issues
   - github/github-mcp-server/issue_read
   - github/github-mcp-server/issue_write
-  - github/github-mcp-server/add_issue_comment
 ---
 
-# Format GitHub Issue
+# Update GitHub Issue (Feature Request Only)
 
-Reformat and review an existing GitHub issue ${input:issue_number:Issue number on GitHub} to match the correct template in `.github/ISSUE_TEMPLATE/`.
+Reformat and review an existing GitHub issue ${input:issue_number:Issue number on GitHub} to match the **🚀 Feature Request** template (`.github/ISSUE_TEMPLATE/feature_request.yml`).
 
 ## Steps
 
-1. **Verify Issue**
+### 1. Verify Issue
 
-   - Use #github/github-mcp-server/search_issues to confirm the issue exists.
-   - If it does **not** exist, stop immediately (do not create a new issue).
-   - If inaccessible, return:
-     ```
-     Error: Could not access issue ${input:issue_number:Issue number on GitHub}. No changes made.
-     ```
+- Use #github/github-mcp-server/search_issues to confirm the issue exists.
+- If it does **not** exist, stop immediately (do not create a new issue).
+- If inaccessible, return:
 
-2. **Read Existing Issue**
+```
+Error: Could not access issue ${input:issue_number:Issue number on GitHub}. No changes made.
+```
 
-   - Retrieve the issue’s title, body, and metadata using #github/github-mcp-server/issue_read tool.
+### 2. Read Existing Issue
 
-3. **Find the Appropriate Template**
+- Retrieve the issue’s title, body, and metadata using #github/github-mcp-server/issue_read .
+- Extract all text content, paying attention to user-provided details that describe:
+- The feature being requested.
+- The problem or motivation behind it.
+- Any steps, ideas, or implementation notes.
+- Extra references, images, or links.
 
-   - Use #search tool to list all files under `.github/ISSUE_TEMPLATE/`.
-   - For each template:
-     - Read its frontmatter (`name`, `about`, etc.).
-     - Compare issue title/body keywords against template keywords.
-     - Choose the template with the **highest contextual match**.
-   - If no strong match is found:
-     - Use defaults:
-       - `bug_report.md` for crashes, errors, or reproducible problems.
-       - `feature_request.md` for suggestions or new ideas.
-     - If still unclear, leave the issue unchanged and return:
-       ```
-       No suitable template match found. Issue left as-is.
-       ```
+### 3. Select Template
 
-4. **Reformat the Issue**
+- Always use: `.github/ISSUE_TEMPLATE/feature-request.yml`
+- Template Metadata:
 
-   - Rebuild the issue body using **only** the fields from the chosen template.
-   - Fill in known fields from the existing issue content.
-   - For missing fields, use `N/A`.
-   - Maintain the **exact structure** and section order of the template.
-   - Do **not** remove or add extra sections.
+```yaml
+name: "🚀 Feature Request"
+description: Suggest a new feature or improvement
+title: "feat: "
+labels: ["feat"]
+assignees: []
+```
 
-5. **Update the Title**
+### 4. Reformat the Issue Body
 
-   - Keep the original title if it’s already descriptive.
-   - If vague, improve it slightly (≤15 words) while keeping the same meaning and tone.
+Rebuild the issue body strictly following the `feature_request.yml` structure.
+Use the existing issue content to fill each section as accurately as possible.
 
-6. **Preserve Voice and Tone**
+For each section (`Description`, `Motivation / Use Case`, `Proposed Tasks / To-Do List`, `Additional Context`):
 
-   - Retain the author's original language, writing style, and sentiment.
-   - You **may** improve clarity, grammar, or organization, but **must not** remove any factual information provided by the author.
-   - Preserve exact wording where possible—only modify when necessary for readability or template compliance.
-   - If clarification is needed, add minimal context without changing the author's voice or intent.
+- Follow the **template’s description and placeholder text** closely as guidance for what belongs in that section.
+- Use the **author’s original text** when possible, reorganizing or summarizing only for clarity.
+- When information is missing, use the **template’s placeholder** as a fallback example or mark as `N/A`.
+- Preserve the **format, order, and headings** exactly as defined in the template.
 
-7. **Optional: Preview Step (if enabled)**
+Example:
 
-   - Before updating, return the reformatted issue for review.
-   - Example:
-     ```
-     Preview generated for review — confirm before writing.
-     ```
+```
+### Description
+[Extracted or summarized feature details; if none, use template placeholder or N/A]
+```
 
-8. **Write Updated Issue**
+### 5. Update the Title
 
-   - Use #github/github-mcp-server/issue_write tool to replace the issue’s body and/or title with the reformatted content.
+- If the current title already starts with `feat:` or is descriptive, keep it.
+- Otherwise, prepend `feat:` and rephrase for clarity (≤15 words).
+  Example:
 
-9. **Add a Review and Suggest Improvements**
+  ```
+  Original: Add customization for notifications
+  Updated: feat: Add notification customization options
+  ```
 
-   Perform a content review to enhance the issue’s usefulness by suggesting possible directions.
+### 6. Write Updated Issue
 
-   When to Use:
-
-   - The issue is vague or lacks actionable details.
-   - The author’s intent is clear but missing references, methods, or next steps.
-
-   Guidelines:
-
-   - Offer non-intrusive, constructive, and informative additions.
-   - Suggest, but do not impose, possible improvements such as:
-     - Potential solutions or approach outlines.
-     - Relevant methods, functions, or API endpoints.
-     - Helpful examples.
-     - Common troubleshooting steps or best practices.
-
-10. **Add Comment with Review**
-
-    - Use #github/github-mcp-server/add_issue_comment tool to append a comment with the review and suggestions.
+- Use #github/github-mcp-server/issue_write to replace the issue’s **body** and/or **title** with the reformatted version.
 
 ## Output
 
-Return the updated issue in the following format:
-
-```markdown
-<!-- Using template: .github/ISSUE_TEMPLATE/[template-name].md -->
-
-**Title:** [Updated or original title]
-
-[Filled-in template fields]
-```
-
-If no update was performed, return the appropriate error or status message.
+Return the major changes made.
 
 ## Rules
 
-- Only modify existing issues — never create new ones.
-- Follow the selected template’s structure exactly.
-- Keep titles clear, concise, and meaningful.
-- Preserve the author’s tone and intent.
-- If unsure about formatting or template choice, err on the side of minimal change.
-- Templates should be read from the repository’s `.github/ISSUE_TEMPLATE/` directory via the repository content API (not local filesystem).
+- Only modify **existing issues** — never create new ones.
+- Follow the **feature_request template** structure exactly.
+- Keep titles short, descriptive, and prefixed with `feat:`.
+- Preserve author tone and factual content.
+- Avoid adding commentary or reviews — only reformat for structure and clarity.
+- Keep the author’s original writing style and sentiment.
+- Improve readability and structure only where needed.
+- Do **not** change intent or meaning.
+- Minor grammar and formatting fixes are acceptable.
