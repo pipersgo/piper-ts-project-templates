@@ -5,7 +5,7 @@ applyTo: "**/*.md"
 
 ## Goal
 
-You are assisting in creating, improving, or maintaining Markdown (`.md`) files.  
+You are assisting in creating, improving, or maintaining Markdown (`.md`) files.
 Your sole focus is to generate **clear, properly formatted Markdown** that follows best practices for documentation and readability.
 
 ## General Guidelines
