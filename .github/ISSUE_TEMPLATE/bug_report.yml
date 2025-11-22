@@ -8,15 +8,6 @@ body:
       value: |
         Thank you for reporting this bug. Please provide details to help us investigate and resolve the issue.
 
-  - type: input
-    id: template-area
-    attributes:
-      label: Which template is affected?
-      description: Enter the template path (e.g., ts/with-turborepo, ai/with-awesome-copilot)
-      placeholder: "ts/with-turborepo"
-    validations:
-      required: true
-
   - type: textarea
     id: description
     attributes:
@@ -37,7 +28,7 @@ body:
         3. Run `pnpm build`
         4. Observe the error
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: expected
@@ -46,7 +37,7 @@ body:
       description: "Describe what should happen."
       placeholder: "e.g., Build should complete without errors."
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: actual
