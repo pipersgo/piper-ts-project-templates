@@ -1,4 +1,4 @@
-# Piper Templates
+# Piperup Templates
 
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
@@ -8,7 +8,7 @@ A curated collection of production-ready templates, AI prompts, and automation t
 
 ## Documentation
 
-For detailed guides, setup instructions, and best practices, visit the [Piper Templates documentation](https://pipersgo.github.io/piper-templates).
+For detailed guides, setup instructions, and best practices, visit the [Piperup Templates documentation](https://templates-page.piperup.dev).
 
 ## Templates
 
