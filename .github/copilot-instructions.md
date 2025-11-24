@@ -1,4 +1,4 @@
-# Copilot Instructions for piper-templates
+# Copilot Instructions
 
 ## Repository Overview
 
