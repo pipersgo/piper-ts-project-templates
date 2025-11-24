@@ -6,7 +6,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   plugins: ["./src/plugins/plugin-tailwind.ts"],
-  title: "Piper Templates",
+  title: "PiperUp Templates",
   tagline: "By PiperUp",
   favicon: "img/favicon.ico",
 
@@ -64,6 +64,7 @@ const config: Config = {
       logo: {
         alt: "PiperUp Templates Logo",
         src: "img/logo.svg",
+        srcDark: "img/logo-dark.svg",
       },
       items: [
         {

@@ -1,6 +1,16 @@
-# Piperup Templates
+<div align="center">
+<a href="https://templates-page.piperup.dev">
+<img src="./docs/static/img/header-table.png" alt="PiperUp Templates Header Table" />
+</a>
+</div>
+
+<div align="center">
 
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+
+</div>
+
+# PiperUp Templates
 
 ⭐ If you like this project, star it on GitHub — it helps a lot!
 
@@ -8,7 +18,7 @@ A curated collection of production-ready templates, AI prompts, and automation t
 
 ## Documentation
 
-For detailed guides, setup instructions, and best practices, visit the [Piperup Templates documentation](https://templates-page.piperup.dev).
+For detailed guides, setup instructions, and best practices, visit the [PiperUp Templates Documentation](https://templates-page.piperup.dev).
 
 ## Templates
 
