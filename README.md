@@ -18,7 +18,7 @@ A curated collection of production-ready templates, AI prompts, and automation t
 
 ## Documentation
 
-For detailed guides, setup instructions, and best practices, visit the [Piperup Templates documentation](https://templates-page.piperup.dev).
+For detailed guides, setup instructions, and best practices, visit the [PiperUp Templates Documentation](https://templates-page.piperup.dev).
 
 ## Templates
 
