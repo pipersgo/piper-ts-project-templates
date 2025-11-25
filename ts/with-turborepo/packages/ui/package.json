@@ -9,6 +9,7 @@
     "./header": "./src/components/header.ts",
     "./setup-counter": "./src/utils/counter.ts",
     "./components/ui/*": "./src/components/ui/*.tsx",
+    "./components/*": "./src/components/*.tsx",
     "./lib/*": "./src/lib/*.ts",
     "./hooks/*": "./src/hooks/*.ts"
   },
