@@ -12,8 +12,8 @@ body:
     id: description
     attributes:
       label: "Description"
-      description: "Clearly describe what the bug is and how it manifests."
-      placeholder: "e.g., Build fails with TypeScript error when running pnpm build."
+      description: "Provide a concise summary of the bug, any visible symptoms, and where it appears."
+      placeholder: "e.g., Running `pnpm build` in ts/with-turborepo exits with a TypeScript error before assets compile."
     validations:
       required: true
 
@@ -21,7 +21,7 @@ body:
     id: reproduction
     attributes:
       label: "Steps to Reproduce"
-      description: "Provide steps to reproduce the bug."
+      description: "List the minimum actions needed to trigger the bug."
       placeholder: |
         1. Copy template from ts/with-turborepo
         2. Run `pnpm install`
@@ -34,8 +34,8 @@ body:
     id: expected
     attributes:
       label: "Expected Behavior"
-      description: "Describe what should happen."
-      placeholder: "e.g., Build should complete without errors."
+      description: "State the outcome you anticipated after following the reproduction steps."
+      placeholder: "e.g., Build completes successfully and outputs production bundles without warnings."
     validations:
       required: false
 
@@ -43,20 +43,21 @@ body:
     id: actual
     attributes:
       label: "Actual Behavior"
-      description: "Describe what actually occurs."
-      placeholder: "e.g., Build fails with 'Type not found' error."
+      description: "Explain what happened instead. Include screenshots or terminal snippets if helpful."
+      placeholder: "e.g., Build aborts at 35% with `TS2307: Cannot find module '@/components/button'`."
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: environment
     attributes:
       label: "Environment"
-      description: "Provide relevant system and tool versions."
+      description: "List versions and configuration details that might influence the bug."
       placeholder: |
         - OS: Ubuntu 24.04
         - Node: 20.11.0
         - pnpm: 8.15.6
+        - Template: ts/with-turborepo (commit abc123)
     validations:
       required: false
 
@@ -64,7 +65,7 @@ body:
     id: logs
     attributes:
       label: "Error Logs"
-      description: "Paste any error messages or terminal output."
+      description: "Paste relevant log excerpts, stack traces, or command output. Use fenced blocks for clarity."
       render: shell
     validations:
       required: false
@@ -73,7 +74,7 @@ body:
     id: additional
     attributes:
       label: "Additional Context"
-      description: "Include any references, links, or other relevant information."
-      placeholder: "e.g., Related issue, similar behavior, workaround."
+      description: "Add links to related issues, PRs, or temporary workarounds."
+      placeholder: "e.g., Related issue #123, temporary workaround is to pin @repo/ui to 0.1.4."
     validations:
       required: false
